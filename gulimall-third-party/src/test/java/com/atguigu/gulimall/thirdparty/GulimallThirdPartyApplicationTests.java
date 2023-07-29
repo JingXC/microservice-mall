@@ -6,6 +6,7 @@ import com.aliyun.oss.OSSClient;
 import com.aliyun.oss.OSSException;
 import com.aliyun.oss.model.PutObjectRequest;
 import com.aliyun.oss.model.PutObjectResult;
+import com.atguigu.gulimall.thirdparty.component.SmsComponent;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,6 +23,9 @@ public class GulimallThirdPartyApplicationTests {
 
 	@Resource
 	private OSSClient ossClient;
+
+	@Resource
+	private SmsComponent smsComponent;
 
 	@Test
 	public void contextLoads() {
@@ -58,6 +62,11 @@ public class GulimallThirdPartyApplicationTests {
 				ossClient.shutdown();
 			}
 		}
+	}
+
+	@Test
+	public void testSms(){
+		smsComponent.sendCode("17611017300","66666");
 	}
 
 }
